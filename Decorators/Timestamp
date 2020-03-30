@@ -1,0 +1,14 @@
+from datetime import datetime
+
+
+''' Decorator to precede status with timestamp '''
+def timestamp_decorator(old_func):
+    def wrapper(*args, **kwargs):
+        return "{} - ".format(datetime.now()) + old_func(*args, **kwargs)
+    return wrapper
+
+@timestamp_decorator
+def status(message):
+    return message
+    
+status("Today is a new day!")
